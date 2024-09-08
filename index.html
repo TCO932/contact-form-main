@@ -9,36 +9,108 @@
   <title>Frontend Mentor | Contact form</title>
 
   <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
 
-  Contact Us
+  <main>
+    <form id="form" novalidate>
+      <h1 class="header">
+        Contact Us
+      </h1>
 
-  First Name
-  This field is required
+      <label class="first-name">
+        <span>
+          First Name
+        </span>
+        <input type="text" name="first-name" required >
+        <p id="value-missing-error" class="error-message">
+          This field is required
+        </p>
+      </label>
+      
+      <label class="last-name">
+        <span>
+          Last Name
+        </span>
+        <input type="text" name="last-name" required >
+        <p id="value-missing-error" class="error-message">
+          This field is required
+        </p>
+      </label>
+      
+      <label class="email">
+        <span>
+          Email address
+        </span>
+        <input type="email" required >
+        <p id="invalid-email-error" class="error-message">
+          Please enter a valid email address
+        </p>
+        <p id="value-missing-error" class="error-message">
+          This field is required
+        </p>
+      </label>
 
-  Last Name
-  This field is required
+      <label class="query-type">
+        <span>
+          Query Type
+        </span>
+        <fieldset id="query-type">
+          <label>
+            <input type="radio" name="query-type" value="general-enquiry" required >
+            <span>
+              General Enquiry
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="query-type" value="support-request" required >
+            <span>
+              Support Request
+            </span>
+          </label>
+        </fieldset>
+        <p id="value-missing-error" class="error-message">
+          Please select a query type
+        </p>
+      </label>
 
-  Email Address
-  Please enter a valid email address
-  This field is required
+      <label class="message">
+        <span>
+          Message
+        </span>
+        <textarea name="message" id="" required ></textarea>
+        <p id="value-missing-error" class="error-message">
+          This field is required
+        </p>
+      </label>
 
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
+      <label class="consent">
+        <input type="checkbox" name="consent" required >
+        <span>
+          I consent to being contacted by the team
+        </span>
+        <p id="value-missing-error" class="error-message">
+          To submit this form, please consent to being contacted
+        </p>
+      </label>
 
-  Message
-  This field is required
+      <button id="submit-btn" class="submit-btn" type="submit">
+        Submit
+      </button>
+    </form>
+  </main>
 
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
-  
+  <div id="success-notification">
+    <div class="container">
+      <header>
+        <img src="assets/images/icon-success-check.svg" alt="Success icon">
+        <span>Message Sent!</span>
+      </header>
+      <p>
+        Thanks for completing the form. We'll be in touch soon!
+      </p>
+    </div>
+  </div>
 </body>
 </html>
