@@ -13,7 +13,7 @@ form.addEventListener('submit', function(e) {
         input.setAttribute('aria-invalid', 'false')
         input.removeAttribute('aria-describedby')
         field.querySelectorAll('.error-message').forEach(errorMsg => 
-            errorMsg.classList.remove('show')
+            errorMsg.classList.add('hidden')
         )
         if (!input.checkValidity()) {
             input.setAttribute('aria-invalid', 'true')
@@ -22,11 +22,11 @@ form.addEventListener('submit', function(e) {
     
             if (validity.valueMissing) {
                 const errorMsg = field.querySelector('#value-missing-error')
-                errorMsg?.classList?.add('show')
+                errorMsg?.classList?.remove('hidden')
                 input.setAttribute('aria-describedby', 'value-missing-error')
             } else if (validity.typeMismatch) {
                 const errorMsg = field.querySelector('#invalid-email-error')
-                errorMsg?.classList?.add('show')
+                errorMsg?.classList?.remove('hidden')
                 input.setAttribute('aria-describedby', 'invalid-email-error')
             }
         }

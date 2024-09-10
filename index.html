@@ -24,7 +24,7 @@
           First Name
         </span>
         <input type="text" name="first-name" required >
-        <p id="value-missing-error" class="error-message">
+        <p id="value-missing-error" class="error-message hidden">
           This field is required
         </p>
       </label>
@@ -34,7 +34,7 @@
           Last Name
         </span>
         <input type="text" name="last-name" required >
-        <p id="value-missing-error" class="error-message">
+        <p id="value-missing-error" class="error-message hidden">
           This field is required
         </p>
       </label>
@@ -44,10 +44,10 @@
           Email address
         </span>
         <input type="email" required >
-        <p id="invalid-email-error" class="error-message">
+        <p id="invalid-email-error" class="error-message hidden">
           Please enter a valid email address
         </p>
-        <p id="value-missing-error" class="error-message">
+        <p id="value-missing-error" class="error-message hidden">
           This field is required
         </p>
       </label>
@@ -70,7 +70,7 @@
             </span>
           </label>
         </fieldset>
-        <p id="value-missing-error" class="error-message">
+        <p id="value-missing-error" class="error-message hidden">
           Please select a query type
         </p>
       </label>
@@ -79,8 +79,9 @@
         <span>
           Message
         </span>
-        <textarea name="message" id="" required ></textarea>
-        <p id="value-missing-error" class="error-message">
+        <textarea name="message" id="" required >
+        </textarea>
+        <p id="value-missing-error" class="error-message hidden">
           This field is required
         </p>
       </label>
@@ -90,7 +91,7 @@
         <span>
           I consent to being contacted by the team
         </span>
-        <p id="value-missing-error" class="error-message">
+        <p id="value-missing-error" class="error-message hidden">
           To submit this form, please consent to being contacted
         </p>
       </label>

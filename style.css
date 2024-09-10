@@ -17,6 +17,7 @@
     /* primary */
     --color-green-200: hsl(148, 38%, 91%);
     --color-green-600: hsl(169, 82%, 27%);
+    --color-green-900: hsl(171, 83%, 14%);
     --color-red: hsl(0, 66%, 54%);
     
     /* neutral */
@@ -95,9 +96,20 @@ form {
 label {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-3);
+    gap: var(--spacing-2);
 
     font-size: 0.8rem;
+    position: relative;
+}
+
+label:hover {
+    border-color: var(--color-green-600);
+    cursor: pointer;
+}
+
+input:hover, textarea:hover {
+    border-color: var(--color-green-600) !important;
+    cursor: pointer;
 }
 
 label:has(input:required, textarea:required) span::after {
@@ -122,6 +134,43 @@ input, textarea {
 
 input:not([type=radio], [type=checkbox]) {
     height: var(--size-10);
+}
+
+input[type=checkbox]:checked, input[type=radio]:checked {
+    position: relative;
+}
+
+input[type=radio]:checked::after {
+    content: '';
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: var(--color-green-200);
+    background-image: url('assets/images/icon-radio-selected.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+input[type=radio]:focus-visible {
+    outline: none;
+}
+
+input[type=checkbox]:checked::after {
+    content: '';
+    position: absolute;
+    visibility: visible;
+
+    top: 0;
+    right: -1px;
+    bottom: 0;
+    left: -1px;
+
+    background-image: url('assets/images/icon-checkbox-check.svg');
+    background-size: cover;
 }
 
 textarea {
@@ -154,24 +203,53 @@ fieldset label {
     padding: 0 var(--spacing-5);
 }
 
+fieldset label:has(input[type=radio]:checked) {
+    background-color: var(--color-green-200);
+    border-color: var(--color-green-600);
+}
+
+fieldset label:has(input[type=radio]:focus-visible) {
+    outline: -webkit-focus-ring-color auto 1px;
+    background-color: var(--color-green-200);
+    border-color: var(--color-green-600);
+}
+
 label:has([type=checkbox]) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
+    margin: var(--spacing-4) 0;
+
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-areas: 
+        'i s'
+        'p p';
+    row-gap: 0;
+}
+
+label input[type=checkbox]{
+    grid-area: i;
+}
+
+label:has([type=checkbox]) span{
+    grid-area: s;
 }
 
 label:has([type=checkbox]) p{
-    width: 100%;
+    margin-top: var(--spacing-2);
+    grid-area: p;
 }
+
 
 .error-message {
-    display: none;
     color: var(--color-red);
+    max-height: 1rem;
+    opacity: 1;
+    transition: max-height 200ms ease-in-out, opacity 100ms ease-in-out;
+    overflow: hidden;
 }
 
-p.show {
-    display: block;
+p.hidden {
+    max-height: 0;
+    opacity: 0;
 }
 
 button {
@@ -182,6 +260,13 @@ button {
     background-color: var(--color-green-600);
     color: var(--color-white);
     font-size: 700;
+
+    transition: background-color 150ms ease-in-out;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--color-green-900);
 }
 
 #success-notification {
@@ -190,7 +275,6 @@ button {
     border-radius: var(--size-3);
 
     padding: var(--spacing-5);
-
 
     background-color: var(--color-grey-900);
     color: var(--color-white);
@@ -219,6 +303,13 @@ button {
 }
 
 @media (min-width: 768px) {
+    main {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     form {
         display: grid;
         grid-template-areas:
@@ -254,5 +345,13 @@ button {
     }
     .submit-btn {
         grid-area: submit-btn;
+    }
+
+    fieldset {
+        flex-direction: row;
+    }
+
+    fieldset label {
+        flex: 1;
     }
 }
