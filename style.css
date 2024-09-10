@@ -248,6 +248,7 @@ label:has([type=checkbox]) p{
 }
 
 p.hidden {
+    visibility: hidden;
     max-height: 0;
     opacity: 0;
 }
